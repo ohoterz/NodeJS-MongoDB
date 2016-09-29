@@ -117,6 +117,34 @@ router.route("/users/:id")
         });
     })
 
+router.route("/users/login")
+    .post(function(req,res){
+        var db = new mongoOp();
+        var response = {};
+
+        //mongoOp.find
+        mongoOp.findOne({ userEmail: req.body.userEmail } ,function(err,data){
+        // This will run Mongo Query to fetch data based on ID.
+            if(err) {
+                response = {"error" : true,"message" : "Error fetching data"};
+            } else if (data) {
+                var inputPassword = require('crypto')
+                            .createHash('sha1')
+                            .update(req.body.userPassword)
+                            .digest('base64');
+                if(data.userPassword == inputPassword) {
+                    response = {"error" : false,"message" : "Login OK"};
+                } else {
+                    response = {"error" : true,"message" : "Invalid password"};
+                }
+            } else {
+                response = {"error" : true,"message" : "User not found!"};
+            }
+
+            res.json(response);
+        });
+    })
+
 app.use('/',router);
 
 app.listen(3000);
