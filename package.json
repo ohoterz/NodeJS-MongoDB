@@ -1,7 +1,24 @@
 {
   "name": "megatron",
   "version": "1.0.0",
+  "description": "Example Project",
   "main": "server.js",
   "scripts": {
     "test": "peterhaha"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ohoterz/NodeJS-MongoDB.git"
+  },
+  "keywords": [
+    "Node.js",
+    "mongoDb"
+  ],
+  "author": "Kittichai Somsanitchot",
+  "license": "ISC",
+  "dependencies": {
+	"body-parser": "^1.13.3",
+	"express": "^4.13.3",
+	"mongoose": "^4.1.2"
+  }
+}
