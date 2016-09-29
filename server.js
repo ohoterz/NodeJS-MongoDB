@@ -124,7 +124,6 @@ router.route("/users/login")
 
         //mongoOp.find
         mongoOp.findOne({ userEmail: req.body.userEmail } ,function(err,data){
-        // This will run Mongo Query to fetch data based on ID.
             if(err) {
                 response = {"error" : true,"message" : "Error fetching data"};
             } else if (data) {
